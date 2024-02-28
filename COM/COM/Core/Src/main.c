@@ -64,7 +64,7 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	uint8_t status;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -94,8 +94,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(500);
+		status = HAL_GPIO_ReadPin(Button_GPIO_Port, Button_Pin);
+		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, status);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
