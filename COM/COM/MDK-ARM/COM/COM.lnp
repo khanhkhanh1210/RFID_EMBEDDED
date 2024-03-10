@@ -5,7 +5,6 @@
 "com\stm32f1xx_hal_msp.o"
 "com\usb_device.o"
 "com\usbd_desc.o"
-"com\usbd_custom_hid_if.o"
 "com\usbd_conf.o"
 "com\stm32f1xx_hal_gpio_ex.o"
 "com\stm32f1xx_hal_pcd.o"
@@ -27,7 +26,7 @@
 "com\usbd_core.o"
 "com\usbd_ctlreq.o"
 "com\usbd_ioreq.o"
-"com\usbd_customhid.o"
+"com\usbd_hid.o"
 --strict --scatter "COM\COM.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

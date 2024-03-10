@@ -39,5 +39,4 @@ com\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq
 com\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 com\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 com\usb_device.o: ../USB_DEVICE/App/usbd_desc.h
-com\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
-com\usb_device.o: ../USB_DEVICE/App/usbd_custom_hid_if.h
+com\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc/usbd_hid.h
