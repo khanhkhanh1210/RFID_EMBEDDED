@@ -1,0 +1,25 @@
+--cpu Cortex-M3
+"rfiddemo3\startup_stm32f103xb.o"
+"rfiddemo3\stm32f1_rc522.o"
+"rfiddemo3\main.o"
+"rfiddemo3\stm32f1xx_it.o"
+"rfiddemo3\stm32f1xx_hal_msp.o"
+"rfiddemo3\stm32f1xx_hal_gpio_ex.o"
+"rfiddemo3\stm32f1xx_hal_spi.o"
+"rfiddemo3\stm32f1xx_hal.o"
+"rfiddemo3\stm32f1xx_hal_rcc.o"
+"rfiddemo3\stm32f1xx_hal_rcc_ex.o"
+"rfiddemo3\stm32f1xx_hal_gpio.o"
+"rfiddemo3\stm32f1xx_hal_dma.o"
+"rfiddemo3\stm32f1xx_hal_cortex.o"
+"rfiddemo3\stm32f1xx_hal_pwr.o"
+"rfiddemo3\stm32f1xx_hal_flash.o"
+"rfiddemo3\stm32f1xx_hal_flash_ex.o"
+"rfiddemo3\stm32f1xx_hal_exti.o"
+"rfiddemo3\stm32f1xx_hal_tim.o"
+"rfiddemo3\stm32f1xx_hal_tim_ex.o"
+"rfiddemo3\system_stm32f1xx.o"
+--strict --scatter "RFIDdemo3\RFIDdemo3.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "RFIDdemo3.map" -o RFIDdemo3\RFIDdemo3.axf
