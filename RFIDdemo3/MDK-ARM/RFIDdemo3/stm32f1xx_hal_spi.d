@@ -6,14 +6,14 @@ rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/CMSIS/Include/core_cm3.h
-rfiddemo3\stm32f1xx_hal_spi.o: D:\Windows\Keil-C\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+rfiddemo3\stm32f1xx_hal_spi.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/CMSIS/Include/cmsis_version.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-rfiddemo3\stm32f1xx_hal_spi.o: D:\Windows\Keil-C\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+rfiddemo3\stm32f1xx_hal_spi.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 rfiddemo3\stm32f1xx_hal_spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
