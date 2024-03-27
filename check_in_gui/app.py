@@ -1,36 +1,30 @@
 import sys
-from PyQt6 import QtTest
+from PyQt6.QtGui import *
 from PyQt6.QtCore import QTimer
-from PyQt6.QtWidgets import QApplication, QMainWindow
-from pyembedded.rfid_module.rfid import RFID
-from ui.app_ui import Ui_MainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, QLabel, QVBoxLayout
 
-class APP(QMainWindow, Ui_MainWindow):
+class APP(QMainWindow):
     def __init__(self):
-        QMainWindow.__init__(self)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        super().__init__()
+        self.setupGUI()
+    
+    def setupGUI(self):
+        self.resize(521, 297)
+        self.setWindowTitle("PROMPT")
+        layout = QVBoxLayout()
+        self.label = QLabel("Student's ID")
+        layout.addWidget(self.label)
+        self.label_2 = QLabel("Student's name")
+        layout.addWidget(self.label_2)
+        self.label_3 = QLabel("Checked-in date")
+        layout.addWidget(self.label_3)
+        self.label_4 = QLabel("Class Check-in Wizard")
+        layout.addWidget(self.label_4)
 
-        self.rfid = RFID(port='COM3', baud_rate=9600)
+        self.setLayout(layout)
 
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.get_rfid_id)
-        self.timer.start(1000)
-
-    def get_rfid_id(self):
-        rfid_id = self.rfid.get_id()
-        self.ui.lineEdit.setText(str(rfid_id))
-        self.ui.left_circle.setStyleSheet("border-radius: 10px; background-color: rgb(0, 255, 0); min-height: 20px; min-width: 20px;")
-        self.ui.right_circle.setStyleSheet("border-radius: 10px; background-color: rgb(0, 255, 0); min-height: 20px; min-width: 20px;")
-        self.ui.label_2.setText("Thank You")
-        QtTest.QTest.qWait(3000)
-        self.ui.lineEdit.setText(" ")
-        self.ui.left_circle.setStyleSheet("border-radius: 10px; background-color: rgb(255, 0, 0); min-height: 20px; min-width: 20px;")
-        self.ui.right_circle.setStyleSheet("border-radius: 10px; background-color: rgb(255, 0, 0); min-height: 20px; min-width: 20px;")
-        self.ui.label_2.setText(" ")
-
-
-app = QApplication(sys.argv)
-main_window = APP()
-main_window.show()
-sys.exit(app.exec_())
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    mainwindow = APP()
+    mainwindow.show() 
+    app.exec()
