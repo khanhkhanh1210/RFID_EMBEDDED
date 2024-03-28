@@ -1,6 +1,8 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from ui.app_ui import Ui_MainWindow
+import pandas as pd
+from datetime import datetime
 
 class APP(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -9,7 +11,17 @@ class APP(QMainWindow, Ui_MainWindow):
         self.ui.setupUi(self)
     
     def getdata(self):
-        result = self.textEdit.toPlainText()
+        #Get RFID ID from keyboard
+        ID = self.textEdit.toPlainText()
+
+        #Get checked-in time
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        self.textEdit_3.setPlainText(str(current_time))
+        
+
+
+
 
 
 if __name__ == '__main__':
