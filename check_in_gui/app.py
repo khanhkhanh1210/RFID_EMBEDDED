@@ -1,6 +1,7 @@
 import sys
-from PyQt6.QtGui import *
+import PyQt6.QtCore
 from PyQt6.QtCore import QTimer
+from PyQt6.QtGui import *
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, QLabel, QVBoxLayout
 
 class APP(QMainWindow):
@@ -12,8 +13,6 @@ class APP(QMainWindow):
         self.resize(521, 297)
         self.setWindowTitle("PROMPT")
         layout = QVBoxLayout()
-        self.label = QLabel("Student's ID")
-        layout.addWidget(self.label)
         self.label_2 = QLabel("Student's name")
         layout.addWidget(self.label_2)
         self.label_3 = QLabel("Checked-in date")
