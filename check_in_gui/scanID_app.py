@@ -20,7 +20,7 @@ class APP(QMainWindow, Ui_MainWindow):
         self.ui.lineEdit.textChanged.connect(self.getdatetime)
         self.ui.lineEdit.textChanged.connect(self.checkID)
         # Get the student ID from the lineEdit field and store it in a variable
-        student_id = self.ui.lineEdit.text()
+        #student_id = self.ui.lineEdit.text()
         #self.ui.lineEdit.textChanged.connect(self.newID)
         #if self.ui.lineEdit.isModified():
         #    self.ui.lineEdit.setText(student_id)
@@ -29,6 +29,7 @@ class APP(QMainWindow, Ui_MainWindow):
         self.ui.lineEdit_2.text()
         self.ui.pushButton.clicked.connect(self.addID)
     
+    #Function to check if the student ID is in the file
     def checkID(self):
         student_id = self.ui.lineEdit.text()
         data = pd.read_excel('studentinfo.xlsx')
@@ -38,7 +39,7 @@ class APP(QMainWindow, Ui_MainWindow):
             self.ui.label_5.setText("Student found")
         else:
             self.ui.label_5.setText("Student not found")
-        self.ui.pushButton.clicked.connect(self.addID)
+            self.ui.pushButton.clicked.connect(self.addID)
         #if student_id in data['Student ID'].values:
             # Get the student's name and checked-in date from the file
         #    student_name = data.loc[data['Student ID'] == student_id, 'Student Name'].values[0]
@@ -51,6 +52,7 @@ class APP(QMainWindow, Ui_MainWindow):
         #    self.ui.lineEdit_2.setText("Student not found")
         #    self.ui.lineEdit_3.setText("N/A")
 
+    #Function to get the current time
     def getdatetime(self):
         self.ui.lineEdit_3.setEnabled(True)
         now = datetime.now()
@@ -62,15 +64,23 @@ class APP(QMainWindow, Ui_MainWindow):
         student_id = self.ui.lineEdit.text()
         student_name = self.ui.lineEdit_2.text()
         timecheckin = self.ui.lineEdit_3.text()
-        #create a dataframe using pandas to store the student ID and student name
-        data = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name]})
-        #save the dataframe to a xlsx file
-        data.to_excel('studentinfo.xlsx', index=False)
-        
-    
+
+    # create a dataframe for the new data
+        new_data = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name]})
+        attendance = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name], 'Checked-in Date': [timecheckin]})
+    # try to read the existing data
+        try:
+            data = pd.read_excel('studentinfo.xlsx')
+        # append the new data
+            data = data.append(new_data, ignore_index=True)
+        except FileNotFoundError:
+        # if the file does not exist, use the new data as the data
+            data = new_data
+
+    # save the dataframe to a xlsx file
+            data.to_excel('studentinfo.xlsx', index=False)
         
 
-    
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
