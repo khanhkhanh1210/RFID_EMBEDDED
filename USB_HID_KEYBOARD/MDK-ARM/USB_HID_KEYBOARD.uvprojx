@@ -408,11 +408,6 @@
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f1xx_hal_msp.c</FilePath>
             </File>
-            <File>
-              <FileName>KEYPAD.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Users\khanh\Desktop\Khanh\232\nhung\project\STM32-Hal-CubeMx-and-KeilC-master\Bai18_USB_HID_KEYBOARD\Core\Src\KEYPAD.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
