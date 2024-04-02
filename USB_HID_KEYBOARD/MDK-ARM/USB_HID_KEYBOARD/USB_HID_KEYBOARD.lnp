@@ -3,7 +3,6 @@
 "usb_hid_keyboard\main.o"
 "usb_hid_keyboard\stm32f1xx_it.o"
 "usb_hid_keyboard\stm32f1xx_hal_msp.o"
-"usb_hid_keyboard\keypad.o"
 "usb_hid_keyboard\usb_device.o"
 "usb_hid_keyboard\usbd_desc.o"
 "usb_hid_keyboard\usbd_conf.o"

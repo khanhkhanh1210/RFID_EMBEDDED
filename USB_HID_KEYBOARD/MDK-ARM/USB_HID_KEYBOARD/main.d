@@ -39,4 +39,3 @@ usb_hid_keyboard\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usb
 usb_hid_keyboard\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 usb_hid_keyboard\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 usb_hid_keyboard\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
-usb_hid_keyboard\main.o: ../Core/Inc/KEYPAD.h
