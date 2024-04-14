@@ -17,7 +17,6 @@ class APP(QMainWindow, Ui_MainWindow):
     
     def scanID(self):
         #Calling a function when the lineEdit field is changed
-        self.ui.lineEdit.text()
         self.ui.lineEdit.textChanged.connect(self.getdatetime)
         self.ui.lineEdit.textChanged.connect(self.checkID)
         # Get the student ID from the lineEdit field and store it in a variable
@@ -35,9 +34,9 @@ class APP(QMainWindow, Ui_MainWindow):
         student_id = self.ui.lineEdit.text()
         data = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx')
     
-            # Find student_id in studentinfo.xlsx file 
+        # Find student_id in studentinfo.xlsx file 
         student_info = data.loc[data['Student ID'] == student_id]
-        if 
+        if student_info:
             student_name = student_info['Student Name'].values[0]
             self.ui.lineEdit_2.setText(student_name)
             self.ui.label_5.setText("Student found")
