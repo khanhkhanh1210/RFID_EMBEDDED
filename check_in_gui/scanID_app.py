@@ -13,7 +13,7 @@ class APP(QMainWindow, Ui_MainWindow):
         # Create a timer
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.scanID)
-        self.timer.start(1000)  # Trigger the scanID function every 5 seconds
+        self.timer.start(1000)  # Trigger the scanID function every 1 seconds
     
     def scanID(self):
         #Calling a function when the lineEdit field is changed
@@ -26,18 +26,24 @@ class APP(QMainWindow, Ui_MainWindow):
         #else:
         #    self.ui.lineEdit.setText("")
         #self.ui.lineEdit_2.text()
-        self.ui.pushButton.clicked.connect(self.addID)
         self.ui.lineEdit.textChanged.connect(self.addattendee)
+
+    def getdatetime(self):
+        self.ui.lineEdit_3.setEnabled(True)
+        now = datetime.now()
+        current_time = now.strftime("%d-%m-%Y %H:%M:%S")
+        self.ui.lineEdit_3.setText(current_time)
     
     #Function to check if the student ID is in the file
     def checkID(self):
         student_id = self.ui.lineEdit.text()
-        data = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx')
+        QTimer.singleShot(3000, self.ui.lineEdit.clear)
+        data = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx', dtype={'Student ID': str})
     
         # Find student_id in studentinfo.xlsx file 
-        student_info = data.loc[data['Student ID'] == student_id]
+        student_info = (data.loc[:, 'Student ID'] == student_id).any
         if student_info:
-            student_name = student_info['Student Name'].values[0]
+            student_name = data.loc[data['Student ID'] == student_id, 'Student Name'].values[0]
             self.ui.lineEdit_2.setText(student_name)
             self.ui.label_5.setText("Student found")
         else:
@@ -57,18 +63,14 @@ class APP(QMainWindow, Ui_MainWindow):
         #    self.ui.lineEdit_3.setText("N/A")
 
     #Function to get the current time
-    def getdatetime(self):
-        self.ui.lineEdit_3.setEnabled(True)
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
-        self.ui.lineEdit_3.setText(current_time)
+
 
     #Read student ID from the lineEdit field and create a dataframe using pandas
     def addID(self):
         student_id = self.ui.lineEdit.text()
         student_name = self.ui.lineEdit_2.text()
-        timecheckin = self.ui.lineEdit_3.text()
-
+        #timecheckin = self.ui.lineEdit_3.text()
+        
     # create a dataframe for the new data
         new_info = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name]})
         info = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx')
@@ -88,9 +90,6 @@ class APP(QMainWindow, Ui_MainWindow):
         # if the file does not exist, use the new data as the data
         attend = new_attendance
         attend.to_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/attendees.xlsx', index=False)
-
-        
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
