@@ -1,10 +1,10 @@
 import pandas as pd
-data = pd.read_excel('test.xlsx')
 
-new_info = pd.DataFrame({'Student ID': ['12345'], 'Student Name': ['John Doe']})
-#print(data)
-#data.loc[len(data)] = new_info
-#data.to_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx', index=False)
-#print(new_info)
-data = pd.concat([data, new_info], ignore_index=True)
-print(data)
+# Create a DataFrame
+df = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx')
+# Access the student name of the student with index 0
+# Access the 'Student ID' column
+student_id = 2151034
+student_check = df.loc[:, 'Student ID'] == student_id
+
+print(student_check)
