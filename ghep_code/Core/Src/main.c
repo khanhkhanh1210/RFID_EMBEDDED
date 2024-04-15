@@ -23,6 +23,16 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32f1_rc522.h"
+
+uint8_t str[16];
+uint8_t result[6] = {
+	0, //MODIFIER
+	0, //RESERVED
+	0, //KEYCODE1
+	0, //KEYCODE2
+	0, //KEYCODE3
+	0 //KEYCODE4
+}; 
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE END Includes */
@@ -59,15 +69,7 @@ static void MX_SPI1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-	uint8_t str[16];
-uint8_t result[6] = {
-	0, //MODIFIER
-	0, //RESERVED
-	0, //KEYCODE1
-	0, //KEYCODE2
-	0, //KEYCODE3
-	0 //KEYCODE4
-}; 
+
 /* USER CODE END 0 */
 
 /**
@@ -112,12 +114,12 @@ int main(void)
     /* USER CODE END WHILE */
 		if ((!MFRC522_Request(PICC_REQIDL, str))) {
 	  		  if (MFRC522_Anticoll(str) == MI_OK) {
-						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 						HAL_Delay(100);
-						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);
-	  			  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+	  			  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
 	  			  HAL_Delay(500);
-	  			  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
+	  			  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
 	  			  HAL_Delay(1000);
 						for(int i = 1; i <= 4; i++){
 							for(int j = 2; j <= 5; j++){	
@@ -132,9 +134,9 @@ int main(void)
 									result[j] += 0x1D;
 							}
 							USBD_HID_SendReport(&hUsbDeviceFS, result, sizeof (result)); // gui ki tu 
-							//for(int i = 2; i <= 5; i++)
-							//	result[i] = 0;
-						//	USBD_HID_SendReport(&hUsbDeviceFS, result, sizeof (result)); // dung gui ki tu
+							for(int i = 2; i <= 5; i++)
+								result[i] = 0;
+							USBD_HID_SendReport(&hUsbDeviceFS, result, sizeof (result)); // dung gui ki tu
 						}	
 						
 	  		  }

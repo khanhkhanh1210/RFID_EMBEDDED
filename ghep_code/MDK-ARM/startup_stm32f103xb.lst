@@ -473,8 +473,8 @@ ARM Macro Assembler    Page 8
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=ghep_code\startup_stm32f103xb.d -oghep_code\startup_stm32f103xb.o 
--I.\RTE\_ghep_code -IC:\Users\minht\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMS
-IS\Core\Include -IC:\Users\minht\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4
+-I.\RTE\_ghep_code -IC:\Users\khanh\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMS
+IS\Core\Include -IC:\Users\khanh\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4
 .1\Device\Include --predefine="__UVISION_VERSION SETA 531" --predefine="_RTE_ S
 ETA 1" --predefine="STM32F10X_MD SETA 1" --predefine="_RTE_ SETA 1" --list=star
 tup_stm32f103xb.lst startup_stm32f103xb.s
