@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(320, 120, 161, 51))
+        self.pushButton.setGeometry(QtCore.QRect(320, 110, 161, 51))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.pushButton.setFont(font)
@@ -55,12 +55,15 @@ class Ui_MainWindow(object):
         self.lineEdit_3.setGeometry(QtCore.QRect(40, 180, 211, 31))
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.label_5 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(340, 90, 121, 21))
+        self.label_5.setGeometry(QtCore.QRect(340, 80, 121, 21))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.label_5.setFont(font)
         self.label_5.setText("")
         self.label_5.setObjectName("label_5")
+        self.pushButton_2 = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(350, 170, 100, 32))
+        self.pushButton_2.setObjectName("pushButton_2")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 521, 24))
@@ -81,6 +84,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Checked-in date"))
         self.pushButton.setText(_translate("MainWindow", "Add attendee\'s info"))
         self.label_4.setText(_translate("MainWindow", "Class Check-in Wizard"))
+        self.pushButton_2.setText(_translate("MainWindow", "Clear All"))
 
 
 if __name__ == "__main__":
