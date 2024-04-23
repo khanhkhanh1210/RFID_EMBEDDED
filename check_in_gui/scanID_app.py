@@ -42,7 +42,7 @@ class APP(QMainWindow, Ui_MainWindow):
     def checkID(self):
         student_id = self.ui.lineEdit.text()
         #QTimer.singleShot(3000, self.ui.lineEdit.clear)
-        data = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx', dtype={'Student ID': str})
+        data = pd.read_excel('studentinfo.xlsx', dtype={'Student ID': str})
     
         # Find student_id in studentinfo.xlsx file 
         student_info = (data.loc[:, 'Student ID'] == student_id).any
@@ -86,10 +86,10 @@ class APP(QMainWindow, Ui_MainWindow):
         
     # create a dataframe for the new data
         new_info = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name]})
-        info = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx', dtype={'Student ID': str})
+        info = pd.read_excel('studentinfo.xlsx', dtype={'Student ID': str})
         # append the new data
         info = pd.concat([info, new_info], ignore_index=True)
-        info.to_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx', index=False)
+        info.to_excel('studentinfo.xlsx', index=False)
         #self.ui.lineEdit_2.textChanged.connect(self.addattendee)
 
 
@@ -98,11 +98,11 @@ class APP(QMainWindow, Ui_MainWindow):
         student_name = self.ui.lineEdit_2.text()
         timecheckin = self.ui.lineEdit_3.text()
         new_attendance = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name], 'Checked-in Date': [timecheckin]})
-        attend = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/attendees.xlsx', dtype={'Student ID': str})
+        attend = pd.read_excel('attendees.xlsx', dtype={'Student ID': str})
         # append the new data
         attend = pd.concat([attend, new_attendance], ignore_index=True)
         # if the file does not exist, use the new data as the data
-        attend.to_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/attendees.xlsx', index=False)
+        attend.to_excel('attendees.xlsx', index=False)
         
     
     def clear(self):

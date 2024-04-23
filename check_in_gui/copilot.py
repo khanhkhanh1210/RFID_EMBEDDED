@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 # Create a DataFrame
-df = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/studentinfo.xlsx', dtype={'Student ID': str})
+df = pd.read_excel('studentinfo.xlsx', dtype={'Student ID': str})
 # Access the student name of the student with index 0
 # Access the 'Student ID' column
 student_id = '2151034'
@@ -17,7 +17,7 @@ now = datetime.now()
 timecheckin = now.strftime("%d/%m/%Y %H:%M:%S")
 new_attendance = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name], 'Checked-in Date': [timecheckin]})
 print(new_attendance)
-attend = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/attendees.xlsx', dtype={'Student ID': str})
+attend = pd.read_excel('attendees.xlsx', dtype={'Student ID': str})
 attend = pd.concat([attend, new_attendance], ignore_index=True)
 print(attend)
-attend.to_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/attendees.xlsx', index=False)
+attend.to_excel('attendees.xlsx', index=False)
