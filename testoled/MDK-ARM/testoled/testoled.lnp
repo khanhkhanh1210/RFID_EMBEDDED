@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"testoled\startup_stm32f102xb.o"
+"testoled\fonts.o"
+"testoled\ssd1306.o"
+"testoled\main.o"
+"testoled\stm32f1xx_it.o"
+"testoled\stm32f1xx_hal_msp.o"
+"testoled\stm32f1xx_hal_gpio_ex.o"
+"testoled\stm32f1xx_hal_i2c.o"
+"testoled\stm32f1xx_hal.o"
+"testoled\stm32f1xx_hal_rcc.o"
+"testoled\stm32f1xx_hal_rcc_ex.o"
+"testoled\stm32f1xx_hal_gpio.o"
+"testoled\stm32f1xx_hal_dma.o"
+"testoled\stm32f1xx_hal_cortex.o"
+"testoled\stm32f1xx_hal_pwr.o"
+"testoled\stm32f1xx_hal_flash.o"
+"testoled\stm32f1xx_hal_flash_ex.o"
+"testoled\stm32f1xx_hal_exti.o"
+"testoled\stm32f1xx_hal_tim.o"
+"testoled\stm32f1xx_hal_tim_ex.o"
+"testoled\system_stm32f1xx.o"
+--strict --scatter "testoled\testoled.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "testoled.map" -o testoled\testoled.axf
