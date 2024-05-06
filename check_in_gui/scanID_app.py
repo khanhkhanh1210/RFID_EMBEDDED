@@ -14,10 +14,11 @@ class APP(QMainWindow, Ui_MainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.scanID)
         self.timer.start(3000)  # Trigger the scanID function every 3 seconds
-        self.ui.pushButton_2.clicked.connect(self.clear)
+        #self.ui.pushButton_2.clicked.connect(self.clear)
         self.ui.pushButton.clicked.connect(self.addID)
-        self.ui.lineEdit_3.textChanged.connect(self.addattendee)
         self.ui.lineEdit.textChanged.connect(self.getdatetime)
+        #self.ui.pushButton_2.clicked.connect(self.addattendee)
+        self.ui.pushButton_2.clicked.connect(self.clear_and_addattendee)
         
     
     def scanID(self):
@@ -44,7 +45,6 @@ class APP(QMainWindow, Ui_MainWindow):
                 student_name = matching_rows.values[0]
                 self.ui.lineEdit_2.setText(student_name)
                 self.ui.label_5.setText("Student found")
-                #self.ui.lineEdit_2.textChanged.connect(self.addattendee)
             else:
                 self.ui.label_5.setText("Student not found")
                 
@@ -62,11 +62,18 @@ class APP(QMainWindow, Ui_MainWindow):
         info = pd.concat([info, new_info], ignore_index=True)
         info.to_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/check_in_gui/studentinfo.xlsx', index=False)
 
-
-    def addattendee(self):
+    def clear_and_addattendee(self):
         student_id = self.ui.lineEdit.text()
         student_name = self.ui.lineEdit_2.text()
-        timecheckin = self.ui.lineEdit_3.text()
+        self.clear()
+        self.addattendee(student_id, student_name)
+
+    def addattendee(self, student_id, student_name):
+        #student_id = self.ui.lineEdit.text()
+        #student_name = self.ui.lineEdit_2.text()
+        #self.ui.lineEdit.setText(student_id)
+        #self.ui.lineEdit_2.setText(student_name)
+        timecheckin = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         new_attendance = pd.DataFrame({'Student ID': [student_id], 'Student Name': [student_name], 'Checked-in Date': [timecheckin]})
         attend = pd.read_excel('/Users/yenthee1301/Documents/GitHub/RFID_EMBEDDED/check_in_gui/attendees.xlsx', dtype={'Student ID': str})
         # append the new data
@@ -80,6 +87,7 @@ class APP(QMainWindow, Ui_MainWindow):
         self.ui.lineEdit_2.clear()
         self.ui.lineEdit_3.clear()  
         self.ui.lineEdit.setFocus()
+        self.ui.label_5.clear()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
