@@ -23,7 +23,7 @@ class APP(QMainWindow, Ui_MainWindow):
     
     def scanID(self):
         #Calling a function when the ID input field (lineEdit) is changed
-        self.ui.lineEdit.text()
+        #self.ui.lineEdit.text()
         self.ui.lineEdit.textChanged.connect(self.checkID)
         
     def getdatetime(self):
